@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h2{
+    color: $blue;
+    font-size: 2.4em;
+    line-height: 1.4em;
+    margin: .5em 0;
+}
+
+p{
+    font-size: 1em;
+    line-height: 1.5em;
+    color: $text-color;
+    margin: .5em 0;
+}
+
+.slider-outter {
+    position: relative;
+    height: 220px;
+
+    .slider-wrapper {
+        position: absolute;
+        overflow: hidden;
+
+        .slider-inner {
+            position: relative;
+            height: 220px;
+            transform: rotateY(180deg);
+    
+            .slider-item {
+                display: inline-block;
+                float: left;
+    
+                img {
+                    height: 200px;
+                    margin: 10px;
+                    border-radius: 10px;
+                    transform: rotateY(180deg);
+                  }
+              }
+          }
+      }
+  }
+ 
+  .control{
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 60px;
+    margin: 10px 10px 0 0;
+    float: right;
+    transition: all .3s ease-in-out;
+
+    &-prev{
+        background-image: url(../assets/arrow-gray-left.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 1px solid $grey;
+
+        &:hover{
+            background-image: url(../assets/arrow-blue-left.png);
+            border: 1px solid $blue;
+        }
+    }
+
+    &-next{
+        background-image: url(../assets/arrow-gray-right.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 1px solid $grey;
+
+        &:hover{
+            background-image: url(../assets/arrow-blue-right.png);
+            border: 1px solid $blue;
+        }
+    }
+  }
+
+  .animate-prev {
+    animation-name: animate-prev;
+    animation-duration: 0.5s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .animate-next {
+    animation-name: animate-next;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes animate-prev {
+    0% {
+      transform: perspective(400px) rotateY(-90deg);
+      transform-origin: right;
+      opacity: 0;
+    }
+    50%,
+    to {
+      transform: perspective(400px) rotateY(0deg);
+      transform-origin: right;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes animate-next {
+    from {
+      transform: perspective(400px) rotateY(0deg);
+      transform-origin: right;
+      opacity: 1;
+      filter: blur(0px);
+    }
+    50%,
+    to {
+      transform: perspective(400px) rotateY(-90deg);
+      transform-origin: right;
+      opacity: 0;
+      filter: blur(20px);
+    }
+  }
+  
